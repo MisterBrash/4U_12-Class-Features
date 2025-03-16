@@ -4,7 +4,7 @@
 
 #### Properties, Methods, and Constructors
 
-- [Recall](./RECALL.md)
+- [Recall: Classes](./RECALL.md)
 - [1. Properties](#1-properties)
 - [2. Constructors](#2-constructors)
 - [3. Class Methods](#3-class-methods)
