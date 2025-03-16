@@ -11,12 +11,14 @@
 
 // Example class
 class Rectangle {
-  length;
-  width;
+  length = 0;
+  width = 0;
 
   constructor(length = 1, width = 1) {
-    this.length = length;
-    this.width = width;
+    if (!isNaN(length) && !isNaN(width)) {
+      this.length = length;
+      this.width = width;
+    }
   }
 
   // Return the area of the rectangle
@@ -31,8 +33,12 @@ class Rectangle {
 
   // Scale the length and width by "scale_factor"
   scale(scale_factor) {
-    this.length *= scale_factor;
-    this.width *= scale_factor;
+    if (!isNaN(scale_factor) && scale_factor > 0) {
+      this.length *= scale_factor;
+      this.width *= scale_factor;
+      return true;
+    }
+    return false;
   }  
 
   // Instead of holding data for is_square, calculate it
