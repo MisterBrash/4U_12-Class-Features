@@ -1,77 +1,74 @@
-# Abstract Data Types (Practice)
+# Class Features (Practice)
 
 ###### ICS4U - Mr. Brash 🐿️
 
 🔙 [Go back to the lesson](./README.md)
 
-In [the script file](script.js) you will find a simple example ADT that represents a person. It is just for example sake. Take a look at the syntax and how it is structured. Feel free to test it with some quick sample code and ask your teacher if there is anything you do not understand.
+**Note:** There is example code in your [`script.js`](script.js) file.
+  
+1. Create a class that defines a `Triangle` with `base`, `height`, and a boolean for `right` that _defaults_ to `true`.
 
-## The Stack:
+![Triangle Class Diagram](./.assets/Triangle.png)
 
-A [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) is an [abstract data type](https://en.wikipedia.org/wiki/Abstract_data_type) that we call **L**ast **I**n **F**irst **O**ut (LIFO). It is a well-known ADT in computer science.
+  - Add a **constructor** so that `base` and `height` can be set, along with `right` (which is an _optional_ third argument defaulting to `true`).  
+    ```JS
+    constructor(base = 1, height = 1, right = true) {
+      ...
+    }
+    ```
+  - Create a Class method `area()` which calculates and returns the area of the triangle.
+  - Create the Class method `hypotenuse()` which calculates and returns the hypotenuse _only_ if it is a right-triangle. Return -1 otherwise.
+  - 💪🏻 Want an _optional_ challenge?
+    - Add to the `Triangle` class a variable called `angle_of_elevation`. This will be the _angle of elevation_ at the `base` of the triangle, **_in degrees_** (left or right doesn't matter).
+    - Add the function `perimeter()` which calculates and returns the perimeter of the triangle. Note that the `height` of the triangle is considered an _altitude_ if the triangle is not a right-triangle. That is to say the `height` is _not_ a side-length in that instance. That's why you need the `angle_of_elevation`.
 
-<img alt="A stack visualization with pushing and popping" src="./.assets/stack.jpg" width="400px"><br>
-[Here is another visual representation of pushing and popping](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)#/media/File:Lifo_stack.svg).
-
-### A [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) employs the following properties and functions:
-
-- `contents[]`: the contents of the stack, typically hidden - more on that in a future lesson,
-- `capacity`: a number representing the maximum allowed number of elements on the stack (default it to 20),
-- `push()`: if possible, add an element to the top of the stack,
-- `pop()`: remove (and return) the element on the _top_ of the stack or `null` otherwise,
-- `peek()`: return the element on the top of the stack _without removing it from the stack_ or `null` otherwise,
-- `size()`: return the number of elements on the stack,
-- `space()`: return the remaining space in the stack (if any),
-- `is_empty()`: check if the stack is empty (return true/false),
-- `is_full()`: check if the stack is full (return true/false),
-- `clear()`: empties the stack
-
-**Note:** in JavaScript we are sort of forced to use an *array* for the `contents`. Typically you would use [a linked list](https://simple.wikipedia.org/wiki/Linked_list) and only be able to see the "head" node.
-
----
-
-#### 🤔 When might this data structure be useful?
-
-[There are _many_ uses](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)#Applications_of_stacks):
-
-**Reversing a string or chain** - Put all the letters in a stack and pop them out. Because of the LIFO order of stack, you will get the letters in reverse order.
-
-**Web browsers** - The back button in a browser saves all the URLs you have visited previously in a stack. Each time you visit a new page, it is added on top of the stack. When you press the back button, the current URL is removed from the stack, and the previous URL is accessed.
-
-**Code compilers** - Compilers use the stack to calculate the value of expressions like 2 + 4 / 5 * (7 - 9) by converting the expression to prefix or postfix form.
-
-
-# Your Task:
-Implement a `Stack` ADT in JavaScript, as described above.<br>**Note:** in a perfect world, the `contents` would be hidden and not directly accessible. We will talk about this more in a future lesson.
-
-Once your `Stack` is complete:
-- Create a function (outside the Stack ADT code) called `reverse_string(str)`. This function will **use** the Stack to *return* the given string `str` in reverse.  
-  **For Example:**
+  Test your `Triangle` object thoroughly.<br>
+  **Here's some test code:**<br>
   ```JS
-  reverse_string("Hello World!");
-  > '!dlroW olleH'
+  let tri1 = new Triangle(8, 6);          // Right triangle
+  let tri2 = new Triangle(20, 14, false); // Oblique triangle
+
+  console.log(tri1.hypotenuse(), tri2.hypotenuse());  // Should be "10 -1"
+  console.log(tri1.area(), tri2.area());              // Should be "24 140"
+
+  // If you implement the challenge `perimeter()` function:
+  console.log(tri1.perimeter());  // Should be 24
+  tri2.angle_of_elevation = 40;   // degrees
+  console.log(tri2.perimeter());  // Should be about 248.77
   ```
 
-- create a function (outside the Stack ADT code) called `reverse_number(n)`. This function will **use** the Stack to *return* a *number* in reverse order. All data should *remain* a *number*. Do **not** convert to a string.  
-  **For Example:**
-  ```JS
-  reverse_number(87631);
-  > 13678
-  ```  
-  **Hint:** [the remainder operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Remainder) can help with this task.
+  <br>
 
-  Again - the return value of `reverse_number()` must be *a number* (type: `number`), not a string and you should never convert to anything other than a number in that function.
+2. Recreate your `Stack` ADT as a _Class_. Some of the methods are optional, read further.
 
-  ‼️ **It goes without saying that you are _not_ permitted to use any built-in sorting, slicing, splicing, reversing, or mapping functions for this task.**
+![Stack Class Diagram](./.assets/Stack.png)
+
+  At the very least, include a `constructor`, `contents`, `capacity`, `push()`, `pop()`, `peek()`, `is_empty()`, and `is_full()`:  
+
+  - The `constructor` takes an optional array which represents the contents at the time of creation and an optional number representing the capacity of the stack. _Ensure that the capacity value is a positive number > 0 and round it to a whole number_.
+  - The `push()` function adds to the stack and returns whether or not it was successful (`true` or `false`).
+  - The `pop()` function removes _and_ returns the top item on the stack or `undefined` if the stack is empty.
+  - The `peek()` function returns a copy of the top-most item on the stack or `undefined` if the stack is empty.
+  - `is_empty()` returns `true` if the stack is empty and `false` otherwise.
+  - `is_full()` returns `true` if the stack has reached its limit and `false` otherwise.
+      
+Once you have a defined `Stack` object, make sure to _test it thoroughly_. Try generating multiple stacks and maybe even place one stack into another like this:
+```JS
+let stack1 = new Stack([6, 5, 4, 3, 4, 5, 6], 10);
+let stack2 = new Stack(["hello", "goodbye", "up", "down"]);
+let stack3 = new Stack([], 2);
+
+stack3.push(stack1);
+stack3.push(stack2);
+console.log(stack3.is_full());
+console.log(stack3.is_empty());
+console.log(stack3.peek());
+```
 
 <br>
 
-#### If you finish early, see Mr. Brash about another use for the Stack ADT.
-
-<div style="text-align:center"><h3>Happy Coding! 🐿️</h3><img src="./.assets/stax.png" /></div>
-
 🔙 [Go back to the lesson](./README.md)
 
----
+<br>
 
-<br><br>
+🐿️

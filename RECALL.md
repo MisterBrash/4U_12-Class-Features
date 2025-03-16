@@ -2,8 +2,8 @@
 
 ###### ICS4U - Mr. Brash 🐿️
 
-- [Back to the lesson](./README.md)
-
+- [🔙 to the lesson](./README.md)
+- [⏩ Practice (Classwork)](./PRACTICE.md)
 
 Remember the Stack ADT we created?
 
@@ -98,6 +98,7 @@ my_van.model = "Pacifica"
 // etc...
 ```
 
-⬅️ [Back to the Lesson](./README.md)
+- [🔙 to the lesson](./README.md)
+- [⏩ Practice (Classwork)](./PRACTICE.md)
 
 🐿️

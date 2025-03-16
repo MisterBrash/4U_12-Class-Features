@@ -1,36 +1,43 @@
 /**
  * ICS4U - Mr. Brash 🐿️
- * Abstract Data Types (custom types)
+ * Class Features
  *
- * A common ADT in programming is a Stack.
- * Read the README.md and STACK.md files carefully.
- * Then create a Stack data type and test it with some functions.
+ * Learning about Constructors and Class Methods
  *
  * Author:
- *
  */
 
 'use strict';
 
-/* Example ADT of a 'person'
-   We can also use 'let' instead of 'const' */
-const Person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 0,
+// Example class
+class Rectangle {
+  length;
+  width;
 
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  },
-
-  initials: function() {
-    return this.firstName[0].toUpperCase() + this.lastName[0].toUpperCase();
+  constructor(length = 1, width = 1) {
+    this.length = length;
+    this.width = width;
   }
-};
 
+  // Return the area of the rectangle
+  area() {
+    return this.length * this.width;
+  }
 
-/*** Read the instructions
-     and implement a Stack ADT ***/
-const Stack = {
+  // Return the perimeter of the rectangle
+  perimeter() {
+    return 2 * (this.length + this.width);
+  }
 
-};
+  // Scale the length and width by "scale_factor"
+  scale(scale_factor) {
+    this.length *= scale_factor;
+    this.width *= scale_factor;
+  }  
+
+  // Instead of holding data for is_square, calculate it
+  is_square() {
+    return this.length == this.width;
+  }
+}
+
