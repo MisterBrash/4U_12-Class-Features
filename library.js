@@ -3,10 +3,6 @@
  * 
  *  A useful library of various functions.
  *  Feel free to copy them into your code file or 
- *  import this library using:
- *      const lib = require("./library.js");
- *  and then:
- *      lib.randInt(0, 10);  // for example
  */
 
 'use strict';
