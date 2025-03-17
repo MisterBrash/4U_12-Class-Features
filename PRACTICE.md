@@ -34,7 +34,7 @@
   // If you implement the challenge `perimeter()` function:
   console.log(tri1.perimeter());  // Should be 24
   tri2.angle_of_elevation = 40;   // degrees
-  console.log(tri2.perimeter());  // Should be about 248.77
+  console.log(tri2.perimeter());  // Should be about 56.167
   ```
 
   <br>
